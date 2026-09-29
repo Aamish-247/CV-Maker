@@ -15,29 +15,33 @@ export default function Navbar() {
 
     return (
         <div className="fixed z-50 top-4 left-0 right-0 flex justify-center w-full px-4">
-            <nav className="flex items-center justify-between w-full max-w-6xl px-6 py-4 border border-slate-700/30 rounded-full text-black text-sm bg-slate-300/50 backdrop-blur-md shadow-lg">
+            <nav className="flex items-center justify-between w-full max-w-6xl mx-auto px-6 py-4 border border-indigo-600/30 rounded-full text-black text-sm bg-slate-200/50 backdrop-blur-lg shadow-[0_0_10px_rgba(79,70,229,0.65)]">
                 <a href="#">
                     <img className="h-8 w-auto" src="/assets/logo.svg" alt="Logo" />
                 </a>
                 <div className="hidden md:flex items-center gap-8">
                     {navLinks.map((link) => (
-                        <a 
-                            key={link.name} 
-                            href={link.href} 
-                            className="hover:text-indigo-400 transition"
-                        >
-                            {link.name}
-                        </a>
+                    <a
+                        key={link.name}
+                        href={link.href}
+                        className={`transition text-indigo-600 pb-1 ${
+                        link.href === window.location.pathname
+                        ? "border-b-2 border-indigo-600 shadow-[0_2px_8px_rgba(79,70,229,0.5)]"
+                        : "border-transparent"
+                        }`}
+                    >
+                    {link.name}
+                    </a>
                     ))}
                 </div>
                 <div className="hidden md:flex items-center gap-4">
-                    <button className="hover:bg-slate-800 transition px-4 py-2 border border-slate-600 rounded-full">Sign in</button>
-                    <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 transition rounded-full text-white">Get started</button>
+                    <button className="text-indigo-600 hover:bg-indigo-600 hover:text-white transition duration-300 ease-out px-4 py-2 border border-indigo-600 rounded-full">Sign in</button>
+                    <button className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 hover:shadow-[0_0_20px_rgba(79,70,229,0.8)] transition-shadow duration-300 rounded-full text-white">Get started</button>
                 </div>
             
                <button onClick={() => setOpenMobileMenu(!openMobileMenu)} className="md:hidden text-white">
                     {openMobileMenu ? <XIcon size={24} /> : <MenuIcon size={24} />}
-                </button>
+               </button>
             </nav>    
             {openMobileMenu && (
                 <div className="absolute top-20 left-4 right-4 flex flex-col items-center gap-4 p-6 bg-slate-900/90 backdrop-blur-lg border border-slate-700 rounded-3xl md:hidden shadow-2xl">
@@ -45,7 +49,7 @@ export default function Navbar() {
                         <a 
                             key={link.name} 
                             href={link.href} 
-                            onClick={() => setOpenMobileMenu(false)} // Link click hone par menu band
+                            onClick={() => setOpenMobileMenu(false)} 
                             className="text-white hover:text-indigo-400 text-lg font-medium"
                         >
                             {link.name}
