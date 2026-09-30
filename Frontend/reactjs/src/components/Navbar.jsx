@@ -24,9 +24,9 @@ export default function Navbar() {
                     <a
                         key={link.name}
                         href={link.href}
-                        className={`transition text-indigo-600 pb-1 ${
+                            className={`transition-transform duration-300 ease-out text-indigo-600 pb-1 hover:-translate-y-1 ${
                         link.href === window.location.pathname
-                        ? "border-b-2 border-indigo-600 shadow-[0_2px_8px_rgba(79,70,229,0.5)]"
+                        ? "border-b-3 border-indigo-600 shadow-[0_4px_8px_rgba(79,70,229,0)]"
                         : "border-transparent"
                         }`}
                     >
